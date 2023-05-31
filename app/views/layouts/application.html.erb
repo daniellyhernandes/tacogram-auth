@@ -15,11 +15,18 @@
         <%= flash["notice"] %>
       </div>
       <div class="col-3 text-end">
-        <!-- TODO: if logged in user, show user's first name and Logout button -->
-        <!-- TODO: if logged in user, hide Login and Sign Up -->
-        <a href="/login" class="btn btn-default">Login</a> |
-        <a href="/users/new" class="btn btn-default">Sign Up</a>
-        <a href="/logout" class="btn btn-default">Logout</a>
+        <!-- If current user is logged:--> 
+        <% if @current_user %>
+          <!-- Show the name of the user:--> 
+          <%= @current_user["first_name"] %>
+          <!-- Show the Logout buttom--> |
+          <a href="/logout" class="btn btn-default">Logout</a>
+          <!-- If current user is not logged (false case):-->
+        <% else %>
+          <!-- Show the Login and SignUp buttoms--> |
+          <a href="/login" class="btn btn-default">Login</a> |
+          <a href="/users/new" class="btn btn-default">Sign Up</a>
+        <% end %>
       </div>
     </div>
 
